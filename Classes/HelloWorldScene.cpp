@@ -48,6 +48,12 @@ bool HelloWorld::init()
     {
         return false;
     }
+//    this->updateDisplayedColor(Color3B(0,0,255));
+
+// set background color OK!
+    auto layerColor = LayerColor::create(Color4B(255,0,0,255));
+    layerColor->setVisible(true);
+    this->addChild(layerColor);
 
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -115,6 +121,25 @@ bool HelloWorld::init()
         // add the sprite as a child to this layer
         this->addChild(sprite, 0);
     }
+    auto strawberry  = Sprite::create("strawberry.jpg");
+    strawberry->setPosition(Point(100,100));
+    strawberry->setAnchorPoint(Point(0.5,0.5));
+    this->addChild(strawberry);
+
+    auto size = Director::getInstance()->getWinSize();
+    auto grape = Sprite::create("grape.jpg");
+    grape->setAnchorPoint(Point(0.5,0.5));
+    grape->setPosition(Point(size.width/2,size.height/2));
+    grape->setFlippedY(true);
+    this->addChild(grape);
+
+    auto helloLabel = Label::createWithSystemFont("Hello World","Thonburi",34);
+    helloLabel->setPosition(Point(240,160));
+    helloLabel->enableShadow(Color4B::BLUE,Size(2,-2));
+    this->addChild(helloLabel);
+
+
+
     return true;
 }
 
