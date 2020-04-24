@@ -121,13 +121,13 @@ bool HelloWorld::init()
         // add the sprite as a child to this layer
         this->addChild(sprite, 0);
     }
-    auto strawberry  = Sprite::create("strawberry.jpg");
+    auto strawberry  = Sprite::create("fruit/strawberry.jpg");
     strawberry->setPosition(Point(100,100));
     strawberry->setAnchorPoint(Point(0.5,0.5));
     this->addChild(strawberry);
 
     auto size = Director::getInstance()->getWinSize();
-    auto grape = Sprite::create("grape.jpg");
+    auto grape = Sprite::create("fruit/grape.jpg");
     grape->setAnchorPoint(Point(0.5,0.5));
     grape->setPosition(Point(size.width/2,size.height/2));
     grape->setFlippedY(true);
