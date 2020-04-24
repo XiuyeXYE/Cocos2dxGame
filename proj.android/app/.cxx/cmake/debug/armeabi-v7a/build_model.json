@@ -1,0 +1,76 @@
+{
+  "variant": {
+    "module": {
+      "rootBuildGradleFolder": "E:\\code2\\miniGame\\proj.android",
+      "sdkFolder": "F:\\android-sdk-windows",
+      "isNativeCompilerSettingsCacheEnabled": false,
+      "isBuildOnlyTargetAbiEnabled": true,
+      "splitsAbiFilterSet": [],
+      "intermediatesFolder": "E:\\code2\\miniGame\\proj.android\\app\\build\\intermediates",
+      "gradleModulePathName": ":miniGame",
+      "moduleRootFolder": "E:\\code2\\miniGame\\proj.android\\app",
+      "makeFile": "E:\\code2\\miniGame\\CMakeLists.txt",
+      "buildSystem": "CMAKE",
+      "compilerSettingsCacheFolder": "E:\\code2\\miniGame\\proj.android\\.cxx",
+      "cxxFolder": "E:\\code2\\miniGame\\proj.android\\app\\.cxx",
+      "ndkFolder": "F:\\android-sdk-windows\\ndk\\20.1.5948944",
+      "ndkVersion": "20.1.5948944",
+      "ndkSupportedAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "ndkDefaultAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "cmakeToolchainFile": "."
+    },
+    "buildSystemArgumentList": [
+      "-DCMAKE_FIND_ROOT_PATH\u003d",
+      "-DANDROID_STL\u003dc++_static",
+      "-DANDROID_TOOLCHAIN\u003dclang",
+      "-DANDROID_ARM_NEON\u003dTRUE"
+    ],
+    "cFlagList": [],
+    "cppFlagsList": [
+      "-frtti -fexceptions -fsigned-char"
+    ],
+    "variantName": "debug",
+    "soFolder": "E:\\code2\\miniGame\\proj.android\\app\\build\\intermediates\\cmake\\debug\\lib",
+    "objFolder": "E:\\code2\\miniGame\\proj.android\\app\\build\\intermediates\\cmake\\debug\\obj",
+    "jsonFolder": "E:\\code2\\miniGame\\proj.android\\app\\.cxx\\cmake\\debug",
+    "gradleBuildOutputFolder": "E:\\code2\\miniGame\\proj.android\\app\\.cxx\\cxx\\debug",
+    "isDebuggableEnabled": true,
+    "validAbiList": [
+      "ARMEABI_V7A"
+    ],
+    "buildTargetSet": [
+      "MyGame"
+    ]
+  },
+  "abi": "ARMEABI_V7A",
+  "abiPlatformVersion": 16,
+  "cxxBuildFolder": "E:\\code2\\miniGame\\proj.android\\app\\.cxx\\cmake\\debug\\armeabi-v7a",
+  "jsonFile": "E:\\code2\\miniGame\\proj.android\\app\\.cxx\\cmake\\debug\\armeabi-v7a\\android_gradle_build.json",
+  "gradleBuildOutputFolder": "E:\\code2\\miniGame\\proj.android\\app\\.cxx\\cxx\\debug\\armeabi-v7a",
+  "objFolder": "E:\\code2\\miniGame\\proj.android\\app\\build\\intermediates\\cmake\\debug\\obj\\armeabi-v7a",
+  "buildCommandFile": "E:\\code2\\miniGame\\proj.android\\app\\.cxx\\cmake\\debug\\armeabi-v7a\\build_command.txt",
+  "buildOutputFile": "E:\\code2\\miniGame\\proj.android\\app\\.cxx\\cmake\\debug\\armeabi-v7a\\build_output.txt",
+  "modelOutputFile": "E:\\code2\\miniGame\\proj.android\\app\\.cxx\\cmake\\debug\\armeabi-v7a\\build_model.json",
+  "cmake": {
+    "cmakeListsWrapperFile": "E:\\code2\\miniGame\\proj.android\\app\\.cxx\\cxx\\debug\\armeabi-v7a\\CMakeLists.txt",
+    "toolchainWrapperFile": "E:\\code2\\miniGame\\proj.android\\app\\.cxx\\cxx\\debug\\armeabi-v7a\\android_gradle_build.toolchain.cmake",
+    "buildGenerationStateFile": "E:\\code2\\miniGame\\proj.android\\app\\.cxx\\cxx\\debug\\armeabi-v7a\\build_generation_state.json",
+    "cacheKeyFile": "E:\\code2\\miniGame\\proj.android\\app\\.cxx\\cxx\\debug\\armeabi-v7a\\compiler_cache_key.json",
+    "compilerCacheUseFile": "E:\\code2\\miniGame\\proj.android\\app\\.cxx\\cxx\\debug\\armeabi-v7a\\compiler_cache_use.json",
+    "compilerCacheWriteFile": "E:\\code2\\miniGame\\proj.android\\app\\.cxx\\cxx\\debug\\armeabi-v7a\\compiler_cache_write.json",
+    "toolchainSettingsFromCacheFile": "E:\\code2\\miniGame\\proj.android\\app\\.cxx\\cxx\\debug\\armeabi-v7a\\compiler_settings_cache.cmake",
+    "cmakeWrappingBaseFolder": "."
+  },
+  "jsonGenerationLoggingRecordFile": "E:\\code2\\miniGame\\proj.android\\app\\.cxx\\cmake\\debug\\armeabi-v7a\\json_generation_record.json",
+  "compileCommandsJsonFile": "E:\\code2\\miniGame\\proj.android\\app\\.cxx\\cmake\\debug\\armeabi-v7a\\compile_commands.json"
+}
