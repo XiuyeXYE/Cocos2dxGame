@@ -1,5 +1,5 @@
 {
-  "ndkFolder": "F:\\android-sdk-windows\\ndk\\20.1.5948944",
+  "ndkFolder": "F:\\applications\\android-sdk-windows\\ndk\\20.1.5948944",
   "messages": [
     {
       "level": "INFO",
@@ -7,7 +7,7 @@
     },
     {
       "level": "INFO",
-      "message": "ndk.dir in local.properties is F:\\android-sdk-windows\\ndk\\20.1.5948944"
+      "message": "ndk.dir in local.properties is F:\\applications\\android-sdk-windows\\ndk\\20.1.5948944"
     },
     {
       "level": "INFO",
@@ -15,27 +15,27 @@
     },
     {
       "level": "INFO",
-      "message": "sdkFolder is F:\\android-sdk-windows"
+      "message": "sdkFolder is F:\\applications\\android-sdk-windows"
     },
     {
       "level": "INFO",
-      "message": "Considering F:\\android-sdk-windows\\ndk\\20.1.5948944 by ndk.dir"
+      "message": "Considering F:\\applications\\android-sdk-windows\\ndk\\20.1.5948944 by ndk.dir"
     },
     {
       "level": "INFO",
-      "message": "Considering F:\\android-sdk-windows\\ndk-bundle in SDK ndk-bundle folder"
+      "message": "Considering F:\\applications\\android-sdk-windows\\ndk-bundle in SDK ndk-bundle folder"
     },
     {
       "level": "INFO",
-      "message": "Considering F:\\android-sdk-windows\\ndk\\20.1.5948944 in SDK ndk folder"
+      "message": "Considering F:\\applications\\android-sdk-windows\\ndk\\20.1.5948944 in SDK ndk folder"
     },
     {
       "level": "INFO",
-      "message": "Rejected F:\\android-sdk-windows\\ndk-bundle in SDK ndk-bundle folder because that location has no source.properties"
+      "message": "Rejected F:\\applications\\android-sdk-windows\\ndk-bundle in SDK ndk-bundle folder because that location has no source.properties"
     },
     {
       "level": "INFO",
-      "message": "Found requested ndk.dir (F:\\android-sdk-windows\\ndk\\20.1.5948944) which has version 20.1.5948944"
+      "message": "Found requested ndk.dir (F:\\applications\\android-sdk-windows\\ndk\\20.1.5948944) which has version 20.1.5948944"
     }
   ]
 }

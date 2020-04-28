@@ -27,6 +27,13 @@
 
 #include "cocos2d.h"
 
+typedef __builtin_va_list va_list;
+#define va_start(ap, param) __builtin_va_start(ap, param)
+#define va_end(ap)          __builtin_va_end(ap)
+#define va_arg(ap, type)    __builtin_va_arg(ap, type)
+
+
+
 class HelloWorld : public cocos2d::Scene
 {
 public:
@@ -36,7 +43,11 @@ public:
     
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
-    
+    void menuCallback1(cocos2d::Ref* pSender);
+    void menuCallback2(cocos2d::Ref* pSender);
+    void menuCallback3(cocos2d::Ref* pSender);
+
+
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 };

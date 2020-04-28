@@ -53,6 +53,12 @@ android {
         assets.srcDir "../../Resources"
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
     externalNativeBuild {
         if (PROP_BUILD_TYPE == 'ndk-build') {
             ndkBuild {
@@ -122,7 +128,8 @@ android.applicationVariants.all { variant ->
     // delete previous files first
     delete "${buildDir}/intermediates/assets/${variant.dirName}"
 
-    variant.mergeAssets.doLast {
+//    variant.mergeAssets.doLast {
+    variant.mergeAssetsProvider.get().doLast {
         copy {
             from "${buildDir}/../../../Resources"
             into "${buildDir}/intermediates/assets/${variant.dirName}"
@@ -134,4 +141,34 @@ android.applicationVariants.all { variant ->
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':libcocos2dx')
+
+    implementation 'com.github.xiuyexye:xyjava:0.0.5'
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
+    implementation 'com.squareup.retrofit2:adapter-java8:2.8.1'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.8.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
+    implementation 'com.squareup.retrofit2:converter-java8:2.8.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.4.1'
+
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    implementation 'androidx.percentlayout:percentlayout:1.0.0'
+
+    implementation 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
+//    implementation 'org.springframework.android:spring-android-core:1.0.1.RELEASE'
+
+    implementation 'org.litepal.android:core:1.6.1'
+
+//    implementation 'androidx.lifecycle:common-java8:2.2.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation 'androidx.mediarouter:mediarouter:1.1.0'
 }

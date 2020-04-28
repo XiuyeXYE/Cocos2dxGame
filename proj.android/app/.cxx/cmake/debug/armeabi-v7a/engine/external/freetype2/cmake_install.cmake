@@ -1,8 +1,8 @@
-# Install script for directory: E:/code2/miniGame/cocos2d/external/freetype2
+# Install script for directory: D:/code2/miniGame/cocos2d/external/freetype2
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files/miniGame")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/miniGame")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

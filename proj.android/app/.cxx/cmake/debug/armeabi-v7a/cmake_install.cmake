@@ -1,8 +1,8 @@
-# Install script for directory: E:/code2/miniGame
+# Install script for directory: D:/code2/miniGame
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files/miniGame")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/miniGame")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,8 +34,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("E:/code2/miniGame/proj.android/app/.cxx/cmake/debug/armeabi-v7a/engine/cocos/core/cmake_install.cmake")
-  include("E:/code2/miniGame/proj.android/app/.cxx/cmake/debug/armeabi-v7a/engine/cocos/platform/cmake_install.cmake")
+  include("D:/code2/miniGame/proj.android/app/.cxx/cmake/debug/armeabi-v7a/engine/cocos/core/cmake_install.cmake")
+  include("D:/code2/miniGame/proj.android/app/.cxx/cmake/debug/armeabi-v7a/engine/cocos/platform/cmake_install.cmake")
 
 endif()
 
@@ -47,5 +47,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "E:/code2/miniGame/proj.android/app/.cxx/cmake/debug/armeabi-v7a/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/code2/miniGame/proj.android/app/.cxx/cmake/debug/armeabi-v7a/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

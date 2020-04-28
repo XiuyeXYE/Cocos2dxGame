@@ -24,6 +24,7 @@
 
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
+#include "platform/android/jni/JniHelper.h"
 
 USING_NS_CC;
 
@@ -138,9 +139,60 @@ bool HelloWorld::init()
     helloLabel->enableShadow(Color4B::BLUE,Size(2,-2));
     this->addChild(helloLabel);
 
+    auto item_1 = MenuItemImage::create(
+            "CloseNormal.png","CloseSelected.png",
+            CC_CALLBACK_1(HelloWorld::menuCallback1,this)
+            );
+    auto item_2 = MenuItemImage::create(
+            "CloseNormal.png","CloseSelected.png",
+            CC_CALLBACK_1(HelloWorld::menuCallback2,this)
+            );
+    auto item_3 = MenuItemImage::create(
+            "CloseNormal.png","CloseSelected.png",
+            CC_CALLBACK_1(HelloWorld::menuCallback3,this)
+            );
+    auto menu2 = Menu::create(item_1,item_2,item_3, nullptr);
+    menu2->alignItemsVertically();
+    this->addChild(menu2);
+    auto item_5 = MenuItemFont::create(
+            "Play",
+            CC_CALLBACK_1(HelloWorld::menuCallback1,this)
+            );
+    auto item_6 = MenuItemFont::create(
+            "High Scores",
+            CC_CALLBACK_1(HelloWorld::menuCallback2,this)
+            );
+    auto item_7 = MenuItemFont::create(
+            "About",
+            CC_CALLBACK_1(HelloWorld::menuCallback3,this)
+            );
+    auto menu3 = Menu::create(item_5,item_6,item_7, nullptr);
+    menu3->setPosition(100,100);
+    this->addChild(menu3);
+
+    JniMethodInfo methodInfo;
+    CCLOG("JniMethodInfo %d",JniHelper::getStaticMethodInfo(methodInfo,"com.xiuye.app.util.UIUtil","log","([Ljava/lang/Object;)V"));
+    if(JniHelper::getStaticMethodInfo(methodInfo,"com.xiuye.app.util.UIUtil","log","([Ljava/lang/Object;)V")){
+        JniHelper::callStaticVoidMethod(methodInfo,{"Hello,I am JNI,I be called OK! He hei hei!..."});
+    }
+
+
+//
+//    JniHelper::callStaticVoidMethod("com.xiuye.app.util.UIUtil","log",
+//            "Hello,I am JNI,I be called OK! He hei hei!...");
 
 
     return true;
+}
+
+void HelloWorld::menuCallback1(Ref *pSender){
+    CCLOG("item1");
+}
+void HelloWorld::menuCallback2(Ref *pSender){
+    CCLOG("item2");
+}
+void HelloWorld::menuCallback3(Ref *pSender){
+    CCLOG("item3");
 }
 
 void HelloWorld::menuCloseCallback(Ref *pSender)
