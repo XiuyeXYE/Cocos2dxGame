@@ -54,13 +54,14 @@ NS_CC_BEGIN
             jobjectArray array = t.env->NewObjectArray(list.size(), stringClass, nullptr);
             int i = 0;
             for (auto p = list.begin(); p != list.end(); p++, i++) {
-                jstring str = t.env->NewStringUTF(*p);
-                t.env->SetObjectArrayElement(array, i, str);
+//                jstring str = t.env->NewStringUTF(*p);
+                t.env->SetObjectArrayElement(array, i, convert(localRefs,t,*p));
             }
 
             t.env->CallStaticVoidMethod(t.classID, t.methodID,
                                         array);
             t.env->DeleteLocalRef(t.classID);
+
 
             deleteLocalRefs(t.env, localRefs);
         }

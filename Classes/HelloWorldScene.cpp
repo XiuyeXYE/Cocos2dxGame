@@ -24,9 +24,11 @@
 
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
-#include "platform/android/jni/JniHelper.h"
-
+#include "SecondScene.h"
+#include "MyTools.h"
 USING_NS_CC;
+
+
 
 Scene *HelloWorld::createScene()
 {
@@ -167,31 +169,40 @@ bool HelloWorld::init()
             CC_CALLBACK_1(HelloWorld::menuCallback3,this)
             );
     auto menu3 = Menu::create(item_5,item_6,item_7, nullptr);
+    menu3->alignItemsVertically();
     menu3->setPosition(100,100);
     this->addChild(menu3);
 
-    JniMethodInfo methodInfo;
-    CCLOG("JniMethodInfo %d",JniHelper::getStaticMethodInfo(methodInfo,"com.xiuye.app.util.UIUtil","log","([Ljava/lang/Object;)V"));
-    if(JniHelper::getStaticMethodInfo(methodInfo,"com.xiuye.app.util.UIUtil","log","([Ljava/lang/Object;)V")){
-        JniHelper::callStaticVoidMethod(methodInfo,{"Hello,I am JNI,I be called OK! He hei hei!..."});
-    }
+    alert({"HelloWorld Scene Opened!"});
 
 
-//
-//    JniHelper::callStaticVoidMethod("com.xiuye.app.util.UIUtil","log",
-//            "Hello,I am JNI,I be called OK! He hei hei!...");
+    auto replaceSceneItem = MenuItemFont::create("切换场景",CC_CALLBACK_1(HelloWorld::replaceScene,this));
+
+    auto menu5 = Menu::create(replaceSceneItem, nullptr);
+    menu5->alignItemsVertically();
+    menu5->setPosition(100,200);
+    this->addChild(menu5);
+
 
 
     return true;
 }
 
+void HelloWorld::replaceScene(cocos2d::Ref *pSender) {
+    Director::getInstance()->replaceScene(SecondScene::createScene());
+    alert({"replace Scene"});
+}
+
 void HelloWorld::menuCallback1(Ref *pSender){
+    alert({"item1","called!","哈哈..."});
     CCLOG("item1");
 }
 void HelloWorld::menuCallback2(Ref *pSender){
+    alert({"item2","called!","哈哈..."});
     CCLOG("item2");
 }
 void HelloWorld::menuCallback3(Ref *pSender){
+    alert({"item3","called!","哈哈..."});
     CCLOG("item3");
 }
 

@@ -47,6 +47,7 @@ public:
     void menuCallback2(cocos2d::Ref* pSender);
     void menuCallback3(cocos2d::Ref* pSender);
 
+    void replaceScene(cocos2d::Ref* pSender);
 
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);

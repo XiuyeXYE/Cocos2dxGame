@@ -30,6 +30,8 @@ import android.os.Build;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 
+import com.xiuye.app.util.UIUtil;
+
 public class AppActivity extends Cocos2dxActivity {
 
     @Override
@@ -52,7 +54,7 @@ public class AppActivity extends Cocos2dxActivity {
             getWindow().setAttributes(lp);
         }
         // DO OTHER INITIALIZATION BELOW
-        
+        UIUtil.log(this,"中国游戏！");
     }
 
 }
