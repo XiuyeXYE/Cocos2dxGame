@@ -74,6 +74,7 @@ void ActionScene::replaceScene(cocos2d::Ref *pSender) {
 void ActionScene::initActions() {
     auto sprite = Sprite::create("plane/images/hero.png");
     sprite->setPosition(20, 20);
+    sprite->setTag(1);
     this->addChild(sprite);
     auto jmpAct = JumpBy::create(5.0, Point(300, 100), 150, 5);
     sprite->runAction(jmpAct);
@@ -83,10 +84,17 @@ void ActionScene::initActions() {
     addChild(sprite2);
 
     auto listener = EventListenerTouchOneByOne::create();
-    listener->onTouchBegan = [](Touch *touch, Event *event) -> bool {
+    listener->onTouchBegan = [this](Touch *touch, Event *event) -> bool {
         Point location = touch->getLocation();
         alert({"onTouchBegin: Location x=", std::to_string(location.x).c_str(), "y=",
                std::to_string(location.y).c_str()});
+        auto spr = (Sprite *) this->getChildByTag(1);
+        auto rect = spr->getBoundingBox();
+        if (rect.containsPoint(location)) {
+            spr->setScale(2);
+        } else {
+            spr->setScale(1);
+        }
         return true;
     };
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, 1);
