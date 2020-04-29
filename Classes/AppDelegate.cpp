@@ -118,6 +118,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     register_all_packages();
 
+
+    MenuItemFont::setFontSize(12);
+
     // create a scene. it's an autorelease object
     auto scene = HelloWorld::createScene();
 

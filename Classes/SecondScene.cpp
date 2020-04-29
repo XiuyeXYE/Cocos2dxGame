@@ -41,6 +41,7 @@ void SecondScene::initMenu() {
     MenuItemFont * actionItemTo;
     actionItemTo = MenuItemFont::create("Cocos2dx基本动作Action", [](Ref *sender) {
         Director::getInstance()->replaceScene(ActionScene::createScene());
+//        Director::getInstance()->replaceScene(TransitionPageTurn::create(3,ActionScene::createScene(),true));
     });
 
 

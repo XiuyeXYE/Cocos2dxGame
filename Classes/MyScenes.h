@@ -14,6 +14,7 @@ public:
     virtual bool init();
 
     void initMenu();
+    void initActions();
 
     void replaceScene(cocos2d::Ref* pSender);
 

@@ -211,6 +211,7 @@ bool MenuItemLabel::initWithLabel(Node* label, const ccMenuCallback& callback)
     MenuItem::initWithCallback(callback);
     _originalScale = 1.0f;
     _colorBackup = Color3B::WHITE;
+//    _colorBackup = Color3B::BLACK;
     setDisabledColor(Color3B(126,126,126));
     this->setLabel(label);
 
@@ -416,6 +417,15 @@ bool MenuItemFont::initWithString(const std::string& value, Ref* target, SEL_Men
     return initWithString(value, std::bind(selector,target, std::placeholders::_1) );
 }
 
+void MenuItemFont::setGlobalColor(cocos2d::Color3B &gc) {
+    _fontColor=gc;
+}
+Color3B MenuItemFont::getClobalColor() {
+    return _fontColor;
+}
+
+Color3B MenuItemFont::_fontColor = Color3B::BLACK;
+
 bool MenuItemFont::initWithString(const std::string& value, const ccMenuCallback& callback)
 {
     CCASSERT( !value.empty(), "Value length must be greater than 0");
@@ -424,9 +434,13 @@ bool MenuItemFont::initWithString(const std::string& value, const ccMenuCallback
     _fontSize = _globalFontSize;
 
     Label *label = Label::createWithSystemFont(value, _fontName, _fontSize);
+
+    label->setColor(_fontColor);
+
     if (MenuItemLabel::initWithLabel(label, callback))
     {
         // do something ?
+
     }
     return true;
 }
