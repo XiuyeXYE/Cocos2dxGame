@@ -13,6 +13,8 @@ public:
 
     virtual bool init();
 
+    void initMenu();
+
     void replaceScene(cocos2d::Ref* pSender);
 
     void menuClose(cocos2d::Ref* pSender);

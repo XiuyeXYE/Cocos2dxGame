@@ -122,8 +122,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto scene = HelloWorld::createScene();
 
     // run
-//    director->runWithScene(scene);
-    director->runWithScene(SecondScene::createScene());
+    director->runWithScene(scene);
+//    director->runWithScene(SecondScene::createScene());
 
     return true;
 }

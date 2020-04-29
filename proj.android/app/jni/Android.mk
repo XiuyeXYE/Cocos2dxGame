@@ -10,7 +10,8 @@ LOCAL_SRC_FILES := $(LOCAL_PATH)/hellocpp/main.cpp \
                    $(LOCAL_PATH)/../../../Classes/AppDelegate.cpp \
                    $(LOCAL_PATH)/../../../Classes/HelloWorldScene.cpp \
                    $(LOCAL_PATH)/../../../Classes/SecondScene.cpp \
-                   $(LOCAL_PATH)/../../../Classes/MyTools.cpp
+                   $(LOCAL_PATH)/../../../Classes/MyTools.cpp \
+                   $(LOCAL_PATH)/../../../Classes/MyScenes.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../Classes
 
