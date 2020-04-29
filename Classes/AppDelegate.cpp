@@ -91,6 +91,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setOpenGLView(glview);
     }
 
+
     // turn on display FPS
     director->setDisplayStats(true);
 
@@ -120,6 +121,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 
     MenuItemFont::setFontSize(12);
+//    MenuItemFont::setGlobalColor(Color3B::ORANGE);
 
     // create a scene. it's an autorelease object
     auto scene = HelloWorld::createScene();

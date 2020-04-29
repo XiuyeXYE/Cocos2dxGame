@@ -301,7 +301,7 @@ NS_CC_BEGIN
         CC_DEPRECATED_ATTRIBUTE static const std::string &
         fontName() { return MenuItemFont::getFontName(); };
 
-        static void setGlobalColor(Color3B &gc);
+        static void setGlobalColor(Color3B gc);
 
         static Color3B getClobalColor();
 

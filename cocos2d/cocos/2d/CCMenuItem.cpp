@@ -417,7 +417,7 @@ bool MenuItemFont::initWithString(const std::string& value, Ref* target, SEL_Men
     return initWithString(value, std::bind(selector,target, std::placeholders::_1) );
 }
 
-void MenuItemFont::setGlobalColor(cocos2d::Color3B &gc) {
+void MenuItemFont::setGlobalColor(cocos2d::Color3B gc) {
     _fontColor=gc;
 }
 Color3B MenuItemFont::getClobalColor() {
