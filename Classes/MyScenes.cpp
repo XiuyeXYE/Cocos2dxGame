@@ -116,5 +116,53 @@ void ActionScene::initActions() {
     };
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener2, 1);
 
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("good.plist");
+    auto spr = Sprite::createWithSpriteFrameName("greenapple.jpg");
+    spr->setPosition(100,100);
+    this->addChild(spr);
 
+    auto explosionAnimation = Animation::create();
+    explosionAnimation->setDelayPerUnit(0.3);
+    for(int i=1;i<20;i++){
+        explosionAnimation->addSpriteFrameWithFile(StringUtils::format("plane/images/explosion%d.png",i));
+    }
+    auto explosionAnimate = Animate::create(explosionAnimation);
+
+    spr->runAction(explosionAnimate);
+
+    explosionAnimation = Animation::create();
+    explosionAnimation->setDelayPerUnit(1.0/60);//indeed needed to animate
+    for(int i=1;i<20;i++){
+        explosionAnimation->addSpriteFrame(
+                SpriteFrameCache::getInstance()->getSpriteFrameByName(
+                        StringUtils::format("images/explosion%d.png",i)));
+    }
+    explosionAnimate = Animate::create(explosionAnimation);
+    auto explosionForeverAction = RepeatForever::create(explosionAnimate);
+    auto  explosion = Sprite::createWithSpriteFrameName("images/explosion1.png");
+    explosion->setPosition(200,200);
+
+    this->addChild(explosion);
+    explosion->runAction(explosionForeverAction);
+
+    this->schedule(schedule_selector(ActionScene::scheduleRun),1.0);
+//    auto node = ParallaxNode::create();
+//    this->addChild(node);
+//    auto action_0 = MoveBy::create(10.0,Point(100,100));
+//    auto action_1 = Place::create(Point::ZERO);
+//    auto action_2 = Sequence::create(action_0,action_1);
+//    auto action_3 = RepeatForever::create(action_2);
+//
+//    auto spr_0 = Sprite::createWithSpriteFrameName("lemon.jpg");
+//    spr_0->setAnchorPoint(Point::ZERO);
+//    node->addChild(spr_0,0,Point(1,1),Point::ZERO);
+//
+//    auto spr_1 = Sprite::createWithSpriteFrameName("lemon.jpg");
+//    spr_1->setAnchorPoint(Point::ZERO);
+//    node->addChild(spr_1,0,Point(1,1),Point(100,100));
+//    node->runAction(action_3);
+}
+
+void ActionScene::scheduleRun(float delta) {
+    CCLOG("scheduler running: %f",delta);
 }

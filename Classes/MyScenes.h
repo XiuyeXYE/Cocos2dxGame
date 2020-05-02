@@ -17,6 +17,7 @@ public:
     void initActions();
 
     void replaceScene(cocos2d::Ref* pSender);
+    void scheduleRun(float delta);
 
     CREATE_FUNC(ActionScene);
 };

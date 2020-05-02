@@ -27,7 +27,7 @@
 #include "SecondScene.h"
 #include "MyTools.h"
 USING_NS_CC;
-
+using namespace CocosDenshion;
 
 
 Scene *HelloWorld::createScene()
@@ -184,7 +184,11 @@ bool HelloWorld::init()
     this->addChild(menu5);
 
 
+    auto particle = ParticleExplosion::create();
+    this->addChild(particle);
 
+
+    SimpleAudioEngine::getInstance()->playBackgroundMusic("plane/audio/bgm.mp3",true);
 
 
     return true;
