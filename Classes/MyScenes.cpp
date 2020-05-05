@@ -5,8 +5,10 @@
 #include "MyScenes.h"
 #include "HelloWorldScene.h"
 #include "MyTools.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
+using namespace CocosDenshion;
 
 bool ActionScene::init() {
 
@@ -27,6 +29,8 @@ bool ActionScene::init() {
 
     initMenu();
     initActions();
+    initAudio();
+
 
 
     return true;
@@ -165,4 +169,9 @@ void ActionScene::initActions() {
 
 void ActionScene::scheduleRun(float delta) {
     CCLOG("scheduler running: %f",delta);
+}
+
+void ActionScene::initAudio() {
+    CCLOG("init audio");
+    SimpleAudioEngine::getInstance()->playBackgroundMusic("plane/audio/boom.mp3",true);
 }

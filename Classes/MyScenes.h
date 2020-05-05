@@ -7,6 +7,7 @@
 
 #include "cocos2d.h"
 
+
 class ActionScene:public cocos2d::Scene{
 public:
     static cocos2d::Scene* createScene();
@@ -15,6 +16,7 @@ public:
 
     void initMenu();
     void initActions();
+    void initAudio();
 
     void replaceScene(cocos2d::Ref* pSender);
     void scheduleRun(float delta);
