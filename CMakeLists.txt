@@ -53,6 +53,8 @@ list(APPEND GAME_SOURCE
      Classes/SecondScene.cpp
      Classes/MyTools.cpp
      Classes/MyScenes.cpp
+     Classes/Actor.cpp
+     
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
@@ -60,6 +62,8 @@ list(APPEND GAME_HEADER
      Classes/SecondScene.h
      Classes/MyTools.h
      Classes/MyScenes.h
+     Classes/Actor.h
+     
      )
 
 if(ANDROID)

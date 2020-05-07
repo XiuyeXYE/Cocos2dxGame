@@ -32,10 +32,42 @@ bool ActionScene::init() {
     initAudio();
 
 
-
     return true;
 }
 
+void ActionScene::update(float delta) {
+    Scene::update(delta);
+    CCLOG("update:%f", delta);
+}
+
+void ActionScene::onEnter() {
+    Scene::onEnter();
+    CCLOG("onEnter");
+}
+
+void ActionScene::onEnterTransitionDidFinish() {
+    Scene::onEnterTransitionDidFinish();
+    CCLOG("onEnterTransitionDidFinish");
+}
+
+void ActionScene::onExit() {
+    Scene::onExit();
+    CCLOG("onExit");
+}
+
+void ActionScene::onExitTransitionDidStart() {
+
+    Scene::onExitTransitionDidStart();
+    CCLOG("onExitTransitionDidStart");
+
+}
+
+void ActionScene::cleanup() {
+
+    Scene::cleanup();
+    CCLOG("cleanup");
+
+}
 
 void ActionScene::initMenu() {
     auto visibleSize = Director::getInstance()->getVisibleSize();
@@ -44,7 +76,16 @@ void ActionScene::initMenu() {
                                                CC_CALLBACK_1(ActionScene::replaceScene, this));
     helloWorldItem->setColor(Color3B::BLACK);
     helloWorldItem->setAnchorPoint(Point(1, 0));
-
+    auto toWarScene = MenuItemFont::create("ToWar",
+                                           [](cocos2d::Ref *pSender) {
+                                               Director::getInstance()->getEventDispatcher()->removeAllEventListeners();
+                                               CCLOG("War Scene begin");
+                                               Director::getInstance()->replaceScene(
+                                                       WarScene::createScene());
+                                               CCLOG("War Scene end");
+                                           });
+    toWarScene->setColor(Color3B::BLACK);
+    toWarScene->setAnchorPoint(Point(1, 0));
 
     auto closeItem = MenuItemImage::create(
             "CloseNormal.png",
@@ -52,12 +93,8 @@ void ActionScene::initMenu() {
             [](Ref *sender) {
                 Director::getInstance()->end();
             });
-//    float x = origin.x + visibleSize.width - closeItem->getContentSize().width / 2 - 10;
-//    float y = origin.y + closeItem->getContentSize().height / 2 + 10;
     closeItem->setAnchorPoint(Point(1, 0));
-//    closeItem->setAnchorPoint(Point(1,1));
-//    closeItem->setPosition(visibleSize.width-10,10);
-    auto menu = Menu::create(helloWorldItem, closeItem, nullptr);
+    auto menu = Menu::create(toWarScene, helloWorldItem, closeItem, nullptr);
     menu->alignItemsVertically();
     menu->setAnchorPoint(Point(1, 0));
     menu->setPosition(visibleSize.width - 10, 100);
@@ -72,6 +109,7 @@ cocos2d::Scene *ActionScene::createScene() {
 }
 
 void ActionScene::replaceScene(cocos2d::Ref *pSender) {
+    Director::getInstance()->getEventDispatcher()->removeAllEventListeners();
     Director::getInstance()->replaceScene(HelloWorld::createScene());
 }
 
@@ -94,6 +132,7 @@ void ActionScene::initActions() {
                std::to_string(location.y).c_str()});
         auto spr = (Sprite *) this->getChildByTag(1);
         auto rect = spr->getBoundingBox();
+
         if (rect.containsPoint(location)) {
             spr->setScale(2);
         } else {
@@ -122,34 +161,35 @@ void ActionScene::initActions() {
 
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("good.plist");
     auto spr = Sprite::createWithSpriteFrameName("greenapple.jpg");
-    spr->setPosition(100,100);
+    spr->setPosition(100, 100);
     this->addChild(spr);
 
     auto explosionAnimation = Animation::create();
     explosionAnimation->setDelayPerUnit(0.3);
-    for(int i=1;i<20;i++){
-        explosionAnimation->addSpriteFrameWithFile(StringUtils::format("plane/images/explosion%d.png",i));
+    for (int i = 1; i < 20; i++) {
+        explosionAnimation->addSpriteFrameWithFile(
+                StringUtils::format("plane/images/explosion%d.png", i));
     }
     auto explosionAnimate = Animate::create(explosionAnimation);
 
     spr->runAction(explosionAnimate);
 
     explosionAnimation = Animation::create();
-    explosionAnimation->setDelayPerUnit(1.0/60);//indeed needed to animate
-    for(int i=1;i<20;i++){
+    explosionAnimation->setDelayPerUnit(1.0 / 60);//indeed needed to animate
+    for (int i = 1; i < 20; i++) {
         explosionAnimation->addSpriteFrame(
                 SpriteFrameCache::getInstance()->getSpriteFrameByName(
-                        StringUtils::format("images/explosion%d.png",i)));
+                        StringUtils::format("images/explosion%d.png", i)));
     }
     explosionAnimate = Animate::create(explosionAnimation);
     auto explosionForeverAction = RepeatForever::create(explosionAnimate);
-    auto  explosion = Sprite::createWithSpriteFrameName("images/explosion1.png");
-    explosion->setPosition(200,200);
+    auto explosion = Sprite::createWithSpriteFrameName("images/explosion1.png");
+    explosion->setPosition(200, 200);
 
     this->addChild(explosion);
     explosion->runAction(explosionForeverAction);
-
-    this->schedule(schedule_selector(ActionScene::scheduleRun),1.0);
+//    this->scheduleUpdate();
+//    this->schedule(schedule_selector(ActionScene::scheduleRun), 1.0);
 //    auto node = ParallaxNode::create();
 //    this->addChild(node);
 //    auto action_0 = MoveBy::create(10.0,Point(100,100));
@@ -168,10 +208,88 @@ void ActionScene::initActions() {
 }
 
 void ActionScene::scheduleRun(float delta) {
-    CCLOG("scheduler running: %f",delta);
+    CCLOG("scheduler running: %f", delta);
 }
 
 void ActionScene::initAudio() {
     CCLOG("init audio");
-    SimpleAudioEngine::getInstance()->playBackgroundMusic("plane/audio/boom.mp3",true);
+//    SimpleAudioEngine::getInstance()->playBackgroundMusic("plane/audio/boom.mp3",true);
+    SimpleAudioEngine::getInstance()->playEffect("plane/audio/boom.mp3", true);
+}
+
+cocos2d::Scene *WarScene::createScene() {
+    return WarScene::create();
+}
+
+void WarScene::initBG() {
+    auto layerColor = LayerColor::create(Color4B(0, 0, 255, 255));
+    layerColor->setVisible(true);
+    this->addChild(layerColor);
+}
+
+void WarScene::initMenu() {
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+
+    auto menuItem2 = MenuItemFont::create("Hello World", [this](Ref *sender) {
+        Director::getInstance()->replaceScene(HelloWorld::createScene());
+    });
+    menuItem2->setAnchorPoint(Point(1, 0));
+
+    auto closeItem = MenuItemImage::create(
+            "CloseNormal.png",
+            "CloseSelected.png",
+            [](Ref *sender) {
+                Director::getInstance()->end();
+            });
+    closeItem->setAnchorPoint(Point(1, 0));
+    auto menu = Menu::create(menuItem2, closeItem, nullptr);
+    menu->alignItemsVertically();
+    menu->setAnchorPoint(Point(1, 0));
+    menu->setPosition(visibleSize.width - 10, 100);
+    this->addChild(menu);
+}
+
+void WarScene::initSprite() {
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    hero = new Hero();
+    hero->init();
+    hero->setPosition(origin.x + visibleSize.width / 2,
+                      hero->actor()->getContentSize().height + 10);
+    this->addChild(hero->actor());
+    enemy = new Enemy;
+    enemy->init();
+    enemy->setPosition(origin.x + visibleSize.width / 2,
+                       visibleSize.height - 10 - enemy->actor()->getContentSize().height);
+    this->addChild(enemy->actor());
+
+
+}
+
+bool WarScene::init() {
+    if (!Scene::init()) {
+        return false;
+    }
+
+    GlobalEnv::load();
+
+    initBG();
+    initMenu();
+    initSprite();
+
+    this->scheduleUpdate();
+
+    return true;
+}
+
+void WarScene::update() {
+
+}
+
+WarScene::~WarScene() {
+    hero->release();
+    enemy->release();
+    delete hero;
+    delete enemy;
 }

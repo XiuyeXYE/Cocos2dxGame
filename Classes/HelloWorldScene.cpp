@@ -26,6 +26,8 @@
 #include "SimpleAudioEngine.h"
 #include "SecondScene.h"
 #include "MyTools.h"
+#include "MyScenes.h"
+
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -177,8 +179,11 @@ bool HelloWorld::init()
 
 
     auto replaceSceneItem = MenuItemFont::create("切换场景",CC_CALLBACK_1(HelloWorld::replaceScene,this));
+    auto toWar = MenuItemFont::create("进入战场", [](Ref *sender) {
+        Director::getInstance()->replaceScene(WarScene::createScene());
+    });
 
-    auto menu5 = Menu::create(replaceSceneItem, nullptr);
+    auto menu5 = Menu::create(toWar, replaceSceneItem, nullptr);
     menu5->alignItemsVertically();
     menu5->setPosition(100,200);
     this->addChild(menu5);
