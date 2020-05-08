@@ -39,6 +39,19 @@ void Actor::release() {
     sprite->removeFromParent();
 }
 
+Sprite *Actor::operator->() {
+    return sprite;
+}
+
+Actor::operator Sprite *() {
+    return sprite;
+}
+
+Actor::operator Sprite &() {
+    return *sprite;
+}
+
+
 void Hero::init() {
     sprite = Sprite::createWithSpriteFrameName("images/hero.png");
 }

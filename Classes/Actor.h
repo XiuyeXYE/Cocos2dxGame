@@ -6,8 +6,8 @@
 #define PROJ_ANDROID_ACTOR_H
 
 #include "cocos2d.h"
-#include "../cocos2d/cocos/2d/CCActionInterval.h"
 
+USING_NS_CC;
 
 class GlobalEnv {
 public:
@@ -26,6 +26,12 @@ public:
     virtual void setPosition(float x, float y);
 
     virtual void release();
+
+    virtual cocos2d::Sprite *operator->();
+
+    virtual operator Sprite *();
+
+    virtual operator Sprite &();
 
 protected:
     cocos2d::Sprite *sprite;

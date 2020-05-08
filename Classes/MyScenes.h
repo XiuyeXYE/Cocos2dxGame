@@ -49,12 +49,12 @@ public:
 
     void initSprite();
 
-    void update();
+    void update(float delta);
 
     CREATE_FUNC(WarScene);
 private:
     Hero *hero;
-    Enemy *enemy;
+//    Enemy *enemy;
 public:
     ~WarScene();
 };

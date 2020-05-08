@@ -255,14 +255,16 @@ void WarScene::initSprite() {
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     hero = new Hero();
     hero->init();
-    hero->setPosition(origin.x + visibleSize.width / 2,
-                      hero->actor()->getContentSize().height + 10);
-    this->addChild(hero->actor());
-    enemy = new Enemy;
-    enemy->init();
-    enemy->setPosition(origin.x + visibleSize.width / 2,
-                       visibleSize.height - 10 - enemy->actor()->getContentSize().height);
-    this->addChild(enemy->actor());
+    (*hero)->setAnchorPoint(Point(0.5, 0.5));
+    (*hero)->setRotation(-90);
+    hero->setPosition(visibleSize.width - (*hero)->getBoundingBox().getMaxX(),
+                      visibleSize.height / 2);
+    this->addChild(*hero);
+//    enemy = new Enemy;
+//    enemy->init();
+//    enemy->setPosition(origin.x + visibleSize.width / 2,
+//                       visibleSize.height - 10 - enemy->actor()->getContentSize().height);
+//    this->addChild(enemy->actor());
 
 
 }
@@ -283,13 +285,24 @@ bool WarScene::init() {
     return true;
 }
 
-void WarScene::update() {
+void WarScene::update(float delta) {
+    Scene::update(delta);
 
+    auto pos = (*hero)->getPosition();
+    if (pos.x < 0) {
+        auto visibleSize = Director::getInstance()->getVisibleSize();
+        hero->setPosition(visibleSize.width - (*hero)->getBoundingBox().getMaxX(),
+                          visibleSize.height / 2);
+    }
+    hero->move(3, -3, 0);
+    CCLOG("update!");
 }
 
+
+
 WarScene::~WarScene() {
-    hero->release();
-    enemy->release();
+//    hero->release();
+//    enemy->release();
     delete hero;
-    delete enemy;
+//    delete enemy;
 }
